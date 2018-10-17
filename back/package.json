@@ -1,0 +1,22 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "devDependencies": {
+    "apollo-server": "^2.1.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "pg": "^7.5.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.39.0"
+  }
+}

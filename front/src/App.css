@@ -1,0 +1,48 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.todo-list {
+  height: 70vh;
+  width: 60vw;
+}
+.todo-item, .add-todo, .todo-item>div {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+.todo-item {
+  width: 100%;
+  margin: 10px 0;
+}
+.add-todo {
+  width: 60%;
+}
+button {
+  outline: none;
+  border: none;
+  background-color: brown;
+  border-radius: 3px;
+  color: wheat;
+  font-size: 17px;
+}
+button:active {
+  color: grey;
+  background-color: rgba(165, 42, 42, 0.534)
+}
+button:hover {
+  color: black;
+}
+input {
+  width: 400px;
+  border: 1px solid rgba(165, 42, 42, 0.534);
+  padding-left: 10px;
+  font-size: 20px;
+  color: rgba(48, 48, 48, 0.897);
+  outline: none;
+}
+
