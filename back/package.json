@@ -9,10 +9,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.4",
     "graphql": "^14.0.2",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "pg": "^7.5.0",

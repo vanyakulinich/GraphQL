@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 const sequelize = new Sequelize('testdb', 'postgres', 'postgres', {
   dialect: 'postgres',
 });
@@ -12,11 +12,11 @@ sequelize
   .then(() => console.log('Connection has been established successfully.'))
   .catch(err => console.error('Unable to connect to the database:', err));
 
-const findAllTodos = () => Todos.findAll({order: ['createdAt']}).then(list => list)
+const findAllTodos = () => Todos.findAll({order: ['createdAt']}).then(list => list ? list : [])
 
 const db = {
   Todos,
   findAllTodos,
 }
 
-module.exports = db;
+export default db;

@@ -1,4 +1,4 @@
-const {Todos, findAllTodos} = require('../db');
+import {Todos, findAllTodos} from '../db';
 
 const resolvers = {
   Query: {
@@ -31,4 +31,4 @@ const resolvers = {
   },
 };
 
-module.exports = resolvers;
+export default resolvers;

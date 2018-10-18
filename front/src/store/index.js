@@ -26,11 +26,13 @@ class Store {
   }
 
   @action
-  async modifyTodoList(type, item) {
-  if(!item && !this.input) return;
-  const toBase = item ? item : this.input
-  const result = await changeList(toBase, type);
-  this.todos = [...result];
+    async modifyTodoList(type, item) {
+      // if(type === 'add') this.input = null;
+      if(!item && !this.input) return;
+      const toBase = item ? item : this.input
+      const result = await changeList(toBase, type);
+      this.todos = [...result];
+      if(type === 'add') this.input = null;
   }
 }
 

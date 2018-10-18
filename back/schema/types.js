@@ -1,9 +1,9 @@
-const { gql } = require('apollo-server-express');
+import { gql } from 'apollo-server-express';
 const typeDefs = gql`
   type Todo {
     name: String
     isDone: Boolean
-  }
+  } 
   type Query {
     todos: [Todo]
   }
@@ -12,4 +12,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+export default typeDefs;
