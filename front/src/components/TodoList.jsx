@@ -1,10 +1,11 @@
 import React from 'react';
 import shortid from 'shortid';
+import { observer, inject } from 'mobx-react';
 
-const TodoList = ({listClass, itemClass, list, changeList}) => {
+const TodoList = ({listClass, itemClass, store}) => {
   return (
     <ul className={listClass}>
-      {list && list.map(item => {
+      {store.todos && store.todos.map(item => {
         return (
           <li key={shortid.generate()} className={itemClass}>
             <div>
@@ -13,8 +14,8 @@ const TodoList = ({listClass, itemClass, list, changeList}) => {
                 Status: {item.isDone ? 'done' : 'to be done'}
               </span>
             </div>
-            {!item.isDone && <button onClick={() => changeList(item.name, 'update')}>do it!</button>}
-            <button onClick={()=> changeList(item.name, 'delete')}>x</button>
+            {!item.isDone && <button onClick={() => store.modifyTodoList('update', item.name)}>Done!</button>}
+            <button onClick={()=> store.modifyTodoList('delete', item.name)}>x</button>
           </li>
         )
       })}
@@ -22,4 +23,4 @@ const TodoList = ({listClass, itemClass, list, changeList}) => {
   )
 };
 
-export default TodoList;
+export default inject('store')(observer(TodoList));

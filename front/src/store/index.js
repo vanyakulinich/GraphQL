@@ -1,8 +1,5 @@
 import { observable, computed, action } from 'mobx';
-// import * as mobx from 'mobx';
-import { getTodos } from '../api/requests';
-
-// mobx.configure({ enforceActions: 'observed' })
+import { getTodos, changeList } from '../api/requests';
 
 class Store {
   @observable todos;
@@ -18,10 +15,23 @@ class Store {
   }
 
   @action
-    async getTodoList() {
-     const result = await getTodos();
-     this.todos = [...result];
-    }
+  async getTodoList() {
+    const result = await getTodos();
+    this.todos = [...result];
+  }
+  
+  @action
+  inputValue(e) {
+    this.input = e;
+  }
+
+  @action
+  async modifyTodoList(type, item) {
+  if(!item && !this.input) return;
+  const toBase = item ? item : this.input
+  const result = await changeList(toBase, type);
+  this.todos = [...result];
+  }
 }
 
 const store = new Store();
