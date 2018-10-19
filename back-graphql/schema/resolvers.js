@@ -5,7 +5,7 @@ const resolvers = {
     todos: () => findAllTodos()
   },
   Mutation: {
-    change: (root, {item, type}) => {
+    change: (_, {item, type}) => {
       if(type === 'add') {
         return (
           Todos
