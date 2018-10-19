@@ -1,14 +1,22 @@
 // server
-import  {ApolloServer} from 'apollo-server-express';
 import express from 'express';
-import { typeDefs, resolvers } from './schema';
+import graphqlHTTP from 'express-graphql';
+import cors from 'cors';
+import { schema, rootResolver } from './schema';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const server = new ApolloServer({ typeDefs, resolvers });
 
-server.applyMiddleware({ app }); 
+app
+  .use(cors())
+  .use(
+    '/graphql',
+    graphqlHTTP({
+      schema: schema,
+      rootValue: rootResolver,
+      graphiql: true,
+    })
+  );
 
-app.listen({ port: PORT }, () =>
-console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
-)
+app.listen(PORT, () => console.log('Running a GraphQL API server at http://localhost:4000/graphql'));
+

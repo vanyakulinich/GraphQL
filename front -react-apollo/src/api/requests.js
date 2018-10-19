@@ -19,17 +19,17 @@ export const getTodos = () => {
 
 export const changeList = (item, type) => {
   return graphql
-  .mutate({
-    variables: {item, type},
-    mutation: gql`
-      mutation Change($item: String, $type: String){
-        change(item: $item, type: $type) {
-          name
-          isDone
+    .mutate({
+      variables: {item, type},
+      mutation: gql`
+        mutation Change($item: String, $type: String){
+          change(item: $item, type: $type) {
+            name
+            isDone
+          }
         }
-      }
-    `, 
-  })
-  .then(result => result.data.change)
-  .catch(er => console.log(er))
+      `, 
+    })
+    .then(result => result.data.change)
+    .catch(er => console.log(er))
 }

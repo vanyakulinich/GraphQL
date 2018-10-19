@@ -1,11 +1,8 @@
 import {Todos, findAllTodos} from '../db';
 
-const resolvers = {
-  Query: {
-    todos: () => findAllTodos()
-  },
-  Mutation: {
-    change: (root, {item, type}) => {
+const rootResolver = {
+  todos: () => findAllTodos(),
+  change: (_, {item, type}) => {
       if(type === 'add') {
         return (
           Todos
@@ -28,7 +25,6 @@ const resolvers = {
           .then(() => findAllTodos())
       }
     },
-  },
 };
 
-export default resolvers;
+export default rootResolver;

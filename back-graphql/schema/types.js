@@ -1,5 +1,6 @@
-import { gql } from 'apollo-server-express';
-const typeDefs = gql`
+import { buildSchema } from 'graphql';
+
+const schema = buildSchema(`
   type Todo {
     name: String
     isDone: Boolean
@@ -10,6 +11,6 @@ const typeDefs = gql`
   type Mutation {
     change(item: String, type: String): [Todo]
   }
-`;
+`);
 
-export default typeDefs;
+export default schema;

@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 const sequelize = new Sequelize('testdb', 'postgres', 'postgres', {
   dialect: 'postgres',
+  operatorsAliases: false
 });
 export const Todos = sequelize.define('todos', {
   name: {type: Sequelize.STRING},
