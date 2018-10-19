@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 const sequelize = new Sequelize('testdb', 'postgres', 'postgres', {
   dialect: 'postgres',
 });
-const Todos = sequelize.define('todos', {
+export const Todos = sequelize.define('todos', {
   name: {type: Sequelize.STRING},
   isDone: {type: Sequelize.BOOLEAN}
 });
@@ -12,11 +12,4 @@ sequelize
   .then(() => console.log('Connection has been established successfully.'))
   .catch(err => console.error('Unable to connect to the database:', err));
 
-const findAllTodos = () => Todos.findAll({order: ['createdAt']}).then(list => list ? list : [])
-
-const db = {
-  Todos,
-  findAllTodos,
-}
-
-export default db;
+export const findAllTodos = () => Todos.findAll({order: ['createdAt']}).then(list => list ? list : [])
